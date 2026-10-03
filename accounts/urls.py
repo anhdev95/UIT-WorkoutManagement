@@ -1,0 +1,16 @@
+from django.urls import include, path
+from rest_framework.routers import SimpleRouter
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+from .views import AdminUserViewSet, ProfileView, RegisterView
+
+router = SimpleRouter()
+router.register('admin/users', AdminUserViewSet, basename='admin-user')
+
+urlpatterns = [
+    path('auth/register/', RegisterView.as_view(), name='register'),
+    path('auth/login/', TokenObtainPairView.as_view(), name='login'),
+    path('auth/token/refresh/', TokenRefreshView.as_view(), name='token-refresh'),
+    path('profile/', ProfileView.as_view(), name='profile'),
+    path('', include(router.urls)),
+]
