@@ -5,3 +5,11 @@ __pycache__/
 db.sqlite3
 .DS_Store
 .env
+node_modules/
+
+# Markdown notes (keep README)
+*.md
+!README.md
+
+# Report backups
+*.backup-*.docx
